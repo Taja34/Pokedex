@@ -1,3 +1,5 @@
+const btn = document.getElementById('btn')
+const inputDelPokemon = document.getElementById('inputDelPokemon')
 export const getInfo = async () => {
     const URL = 'https://pokeapi.co/api/v2/pokemon/';
     const { data: { results } } = await axios.get(URL);

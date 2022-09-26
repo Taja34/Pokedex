@@ -1,13 +1,15 @@
-import { getDataUnique, getInfo } from "./scripts/process.js";
+import { getDataUnique, getInfo  } from "./scripts/process.js";
 import { printPokemons, printPokemon } from "./scripts/ui.js";
-const imagenes = ["./img/bulbasor.png","https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png","https://assets.pokemon.com/assets/cms2/img/pokedex/detail/003.png","https://www.pngmart.com/files/13/Charmander-PNG-HD.png","https://i.pinimg.com/originals/37/83/b4/3783b47987aef2a15c1b24a10a8b434c.png","https://assets.pokemon.com/assets/cms2/img/pokedex/full/006_f3.png","./img/kisspng-sea-turtle-pokmon-x-and-y-squirtle-pokmon-go-image-gallery-shiny-squirtle-5bd39f694d93b4.6230156815405955613178.png","./img/pngwing.com (2).png"];
 
 
+const btn = document.getElementById('btn')
+const inputDelPokemon = document.getElementById('inputDelPokemon')
 let pokemonInicio = 1;
-let dataFinal = [];
+let datafiltrada = [];
+let data =[];
 
 const mainFunction = async () => {
-    let data = await getInfo();
+     data = await getInfo();
     let responseInfo = [];
     data.forEach(element => {
         let infoPokemons = getDataUnique(element.url);
@@ -18,14 +20,17 @@ const mainFunction = async () => {
 
     data.forEach((_, index) => {
         data[index].info = newResponse[index];
-        data[index].image = imagenes[index];
+        
         
         
     })
-    dataFinal =  data
-    console.log(dataFinal)
-  
-    printPokemons(dataFinal);
+  datafiltrada=[];
+  data.forEach((element) => {
+    if(datafiltrada.length < 4){
+  datafiltrada.push(element)}
+});
+console.log(data)
+    printPokemons(datafiltrada);
 }
  
 
@@ -34,10 +39,24 @@ document.addEventListener('click', ({ target }) => {
     if(target.classList.contains("a1") ||target.classList.contains("img_bulbasor")){
         console.log(target.id)
 pokemonInicio = target.id;
-console.log(dataFinal)
-let found = dataFinal.find(element => element.info.id == pokemonInicio);
+console.log(datafiltrada)
+let found = datafiltrada.find(element => element.info.id == pokemonInicio);
     console.log(found)
     printPokemon(found)
     }
 
 })
+
+document.addEventListener('click', ({ target }) => {
+    if(target.classList.contains("btn")){
+        let value = inputDelPokemon.value;
+        console.log(datafiltrada)
+            console.log(data)
+                let resultado = data.find(element => element.name == value );
+                console.log(resultado)
+                printPokemon(resultado)
+                inputDelPokemon.value ='';
+            }
+        
+    }
+)
