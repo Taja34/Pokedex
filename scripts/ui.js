@@ -6,7 +6,7 @@ export const printPokemons = async (pokemons) => {
     pokemons.forEach((pokemon) => {
 
         containerPokemons.innerHTML += `
-        <div class="a1" id=${pokemon.info.id}><figure class="bulbasor"><img src=${pokemon.info.sprites.front_default} alt="bulbasor" class="img_bulbasor" id="${pokemon.info.id}"></figure> </div>
+        <div class="a1" id=${pokemon.info.id}><figure class="bulbasor"><img src=${pokemon.info.sprites.other['official-artwork'].front_default} alt="bulbasor" class="img_bulbasor" id="${pokemon.info.id}"></figure> </div>
         `
     });
 }
@@ -34,7 +34,7 @@ export const printPokemon = async (pokemon) => {
 </article>
 <article class="pan2">
 <figure class="img_charizard">
-    <img src=${pokemon.info.sprites.front_default} class="a1_imgcharizard">
+    <img src=${pokemon.info.sprites.other['official-artwork'].front_default} class="a1_imgcharizard">
 </figure>
 </article>
 </aside>
