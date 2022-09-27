@@ -12,16 +12,19 @@ export const printPokemons = async (pokemons) => {
 }
 let tipo = '';
 export const printPokemon = async (pokemon) => {
-    if(pokemon.info.types[0].type.name == "grass"){
+    console.log(pokemon)
+    if(pokemon.types[0].type.name == "grass"){
         tipo = "🌱"
-    }else if(pokemon.info.types[0].type.name == "fire"){
+    }else if(pokemon.types[0].type.name == "fire"){
         tipo = "🔥"
-    }else if(pokemon.info.types[0].type.name == "normal"){
+    }else if(pokemon.types[0].type.name == "normal"){
         tipo = "⏺"
-    }else if(pokemon.info.types[0].type.name == "water"){
+    }else if(pokemon.types[0].type.name == "water"){
         tipo = "💧"
-    }else if(pokemon.info.types[0].type.name == "bug"){
+    }else if(pokemon.types[0].type.name == "bug"){
         tipo = "🐛"
+    }else if(pokemon.types[0].type.name == "electric"){
+        tipo = "🌩"
     }
     
     contenedorPokemonPricipal.innerHTML = '';
@@ -34,7 +37,7 @@ export const printPokemon = async (pokemon) => {
 </article>
 <article class="pan2">
 <figure class="img_charizard">
-    <img src=${pokemon.info.sprites.other['official-artwork'].front_default} class="a1_imgcharizard">
+    <img src=${pokemon.sprites.other['official-artwork'].front_default} class="a1_imgcharizard">
 </figure>
 </article>
 </aside>
@@ -46,7 +49,7 @@ export const printPokemon = async (pokemon) => {
                     <th>levels</th>
                 </tr>
                 <tr>
-                    <td>${pokemon.info.game_indices[0].game_index}</td>
+                    <td>${pokemon.game_indices[0].game_index}</td>
                     <td>100</td>
                 </tr>
             </table>
@@ -61,8 +64,8 @@ export const printPokemon = async (pokemon) => {
                     <th>HABILITY</th>
                 </tr>
                 <tr>
-                    <td>${pokemon.info.types[0].type.name}</td>
-                    <td>${pokemon.info.abilities[0].ability.name}</td>
+                    <td>${pokemon.types[0].type.name}</td>
+                    <td>${pokemon.abilities[0].ability.name}</td>
                 
                 </tr>
             </table>
@@ -76,8 +79,8 @@ export const printPokemon = async (pokemon) => {
                     <th>WEIGHT</th>
                 </tr>
                 <tr>
-                    <td>${pokemon.info.height}</td>
-                    <td>${pokemon.info.weight}</td>
+                    <td>${pokemon.height}</td>
+                    <td>${pokemon.weight}</td>
                 </tr>
             </table>
 

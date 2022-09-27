@@ -396,7 +396,7 @@ main{
     height: max-content;
 }
 footer{
-flex-direction: column;
+flex-direction: flex;
 height: max-content;
 align-items: center;
 gap: 10px;
